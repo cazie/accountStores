@@ -1,0 +1,50 @@
+﻿@page
+@model razortests.Pages.AccountsTemp.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>AccountModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AccountModel.Id" />
+            <div class="form-group">
+                <label asp-for="AccountModel.AccountName" class="control-label"></label>
+                <input asp-for="AccountModel.AccountName" class="form-control" />
+                <span asp-validation-for="AccountModel.AccountName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccountModel.Description" class="control-label"></label>
+                <input asp-for="AccountModel.Description" class="form-control" />
+                <span asp-validation-for="AccountModel.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccountModel.Password" class="control-label"></label>
+                <input asp-for="AccountModel.Password" class="form-control" />
+                <span asp-validation-for="AccountModel.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccountModel.DisplayOrder" class="control-label"></label>
+                <input asp-for="AccountModel.DisplayOrder" class="form-control" />
+                <span asp-validation-for="AccountModel.DisplayOrder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

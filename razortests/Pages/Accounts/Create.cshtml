@@ -1,0 +1,49 @@
+﻿@page
+@model razortests.Pages.Accounts.CreateModel
+@{
+}
+
+
+<form class="row gy-2 gx-3" method="post">
+
+    <div class="form-row p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary pl-3">Create Account</h2>
+            <hr />
+            <div asp-validation-summary="All"></div>
+            <div class="col-12 form-group">
+                Order
+                <input asp-for="Account.DisplayOrder" class="form-control" />
+                <span asp-validation-for="Account.DisplayOrder" class="text-danger"></span>
+                <span asp-validation-for="Account.DisplayOrder" class="text-danger"></span>
+            </div>
+
+            <div class="col-12 form-group">
+                <label asp-for="Account.AccountName"></label>
+                <input asp-for="Account.AccountName" class="form-control" />
+                <span asp-validation-for="Account.AccountName" class="text-danger"></span>
+            </div>
+
+            <div class="col-12 form-group">
+                <label asp-for="Account.Description"></label>
+                <input asp-for="Account.Description" class="form-control" />
+                <span asp-validation-for="Account.Description" class="text-danger"></span>
+            </div>
+
+            <div class="col-12 form-group">
+                <label asp-for="Account.Password"></label>
+                <input asp-for="Account.Password" class="form-control" />
+                <span asp-validation-for="Account.Password" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+            <a asp-page="Index" class="btn btn-secondary" style="width:150px">back to List</a>
+        </div>
+    </div>
+
+</form>
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

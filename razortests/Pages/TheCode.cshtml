@@ -1,0 +1,85 @@
+﻿@page
+@model GeneratePassword.Pages.TheCodeModel
+@{
+}
+<head>
+    <link href="css/prism.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" />
+</head>
+
+<main class="flex-shrink-0">
+    <div class="container py-5 px-5 mt-2">
+        <h2 class="border-1 border-bottom border-dark">The Code for Store Accounts</h2>
+        <div class="row row-cols-1 row-cols-lg-2">
+            <div class="col-lg-8">
+                <pre class="line-numbers">
+                <code class="language-javascript">
+                        public string GeneratePassword(int maxLen, bool Caps, bool Symb, bool numbs)
+                        {
+
+                        string selectCharacters = "abcdefghijklmnopqrstuvwxyz";
+                        string symbs = "!#$%&*)(!#$%&*)(";
+                        string numbers = "12345678901234567890";
+
+
+                        string selectChoice = "";
+
+
+                        Random rand = new Random();
+
+                        string output = "";
+                        if (Caps == true)
+                        {
+                        selectCharacters += selectCharacters.ToUpper();
+
+                        }
+
+                        if (Symb == false)
+                        {
+                        symbs = "";
+
+                        }
+
+                        if (numbs == false)
+                        {
+                        numbers = "";
+                        }
+                        selectChoice = selectCharacters + symbs + numbers;
+
+                        for (int i = 0; i < maxLen; i++)
+                        {
+
+                        int num = rand.Next(selectChoice.Length);
+
+                        output += selectChoice[num];
+
+                        }
+                        return output;
+                        }
+
+                    </code>
+                    </pre>
+
+            </div>
+            <div class="col-lg-4">
+                <p>the Code is stuctured in in several functions.</p>
+                <h5>Store Accounts</h5>
+                <p>Store accounts using Password Generator</p>
+            </div>
+        </div>
+    </div>
+</main>
+@section scripts{ 
+
+    <script src="js/prism.js"></script>
+<script>
+        Prism.plugins.NormalizeWhitespace.setDefaults({
+            'remove-trailing': true,
+            'remove-indent': true,
+            'left-trim': true,
+            'right-trim': true
+        })
+
+    </script>
+
+}
