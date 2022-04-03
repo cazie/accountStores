@@ -31,7 +31,7 @@ namespace razortests
                Configuration.GetConnectionString("DefaultConnection")
                 ));
             services.AddRazorPages();
-            services.AddScoped<GeneratorHelper>();
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

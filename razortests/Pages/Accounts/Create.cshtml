@@ -23,7 +23,7 @@
                 <input asp-for="Account.AccountName" class="form-control" />
                 <span asp-validation-for="Account.AccountName" class="text-danger"></span>
             </div>
-
+          
             <div class="col-12 form-group">
                 <label asp-for="Account.Description"></label>
                 <input asp-for="Account.Description" class="form-control" />
@@ -37,13 +37,23 @@
             </div>
             <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
             <a asp-page="Index" class="btn btn-secondary" style="width:150px">back to List</a>
+         
+
         </div>
+        <input type="text" id="resultmove" size="20">
     </div>
 
 </form>
 @section Scripts{
 
     @{
+        <script>
+        function moveNumbers(number){
+            document.getElementById("resultmove").value=number;
+        }
+        </script>
+
+
         <partial name="_ValidationScriptsPartial" />
     }
 }

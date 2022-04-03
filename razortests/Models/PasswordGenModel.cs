@@ -8,10 +8,10 @@ namespace razortests.Models
     public class PasswordGenModel
     {
 
-        public string Letters { get; set; }
-        public string Numbers { get; set; }
-        public string Symbols { get; set; }
-        public int MaxLength { get; set; } = 10;
+        //public string Letters { get; set; }
+        //public string Numbers { get; set; }
+        //public string Symbols { get; set; }
+        public int MaxLength { get; set; }
 
         public string GeneratedPassword { get; set; }
 

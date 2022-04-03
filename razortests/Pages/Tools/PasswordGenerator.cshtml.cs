@@ -9,19 +9,14 @@ namespace GeneratePassword.Pages
 {
     public class PasswordGeneratorModel : PageModel
     {
-        private readonly GeneratorHelper _passwordGenHelper;
-
-        public PasswordGeneratorModel(GeneratorHelper passwordGenHelper)
-        {
-            _passwordGenHelper = passwordGenHelper;
-        }
+        
 
         [BindProperty(SupportsGet = true)]
         public PasswordGenModel Generator { get; set; }
        
         public void OnGet()
         {
-
+            Generator.MaxLength = 10;
         }
 
         public IActionResult OnPost()
@@ -32,7 +27,7 @@ namespace GeneratePassword.Pages
                 return Page();
             }
 
-            Generator.GeneratedPassword = _passwordGenHelper.GeneratePassword(Generator.MaxLength, Generator.UseCaps, Generator.UseSymb, Generator.UseNumbers);
+            Generator.GeneratedPassword = GeneratorHelper.GenerateComplexPassword(Generator.MaxLength, Generator.UseCaps, Generator.UseSymb, Generator.UseNumbers);
 
 
             return Page();
