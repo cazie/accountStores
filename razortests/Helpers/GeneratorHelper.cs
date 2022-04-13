@@ -1,8 +1,10 @@
 ﻿
+using razortests.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace razortests.Pages.Accounts.Helpers
 {
@@ -10,49 +12,6 @@ namespace razortests.Pages.Accounts.Helpers
     {
 
         public static string GeneratePassword(int maxLen, bool Caps, bool Symb, bool numbs)
-        {
-            // combines all characters - just thrown in the mix - not a guarantee - the shorter the string the odds are lower
-            string selectCharacters = "abcdefghijklmnopqrstuvwxyz";
-            string symbs = "!@#$%&*)(!@#$%&*)(";
-            string numbers = "12345678901234567890";
-
-
-            string selectChoice = "";
-
-
-            Random rand = new Random();
-
-            string output = "";
-            if (Caps == true)
-            {
-                selectCharacters += selectCharacters.ToUpper();
-
-            }
-
-            if (Symb == false)
-            {
-                symbs = "";
-
-            }
-
-            if (numbs == false)
-            {
-                numbers = "";
-            }
-            selectChoice = selectCharacters + symbs + numbers;
-
-            for (int i = 0; i < maxLen; i++)
-            {
-
-                int num = rand.Next(selectChoice.Length);
-
-                output += selectChoice[num];
-
-            }
-            return output;
-        }
-
-        public static string GenerateComplexPassword(int maxLen, bool Caps, bool Symb, bool numbs)
         {
             Random rand = new Random();
 
@@ -82,6 +41,8 @@ namespace razortests.Pages.Accounts.Helpers
 
             output += GetRemaining(minRemaining);
 
+
+
             Random randAll = new Random();
 
             // Create new string from the reordered char array
@@ -89,8 +50,14 @@ namespace razortests.Pages.Accounts.Helpers
             string outputFinal = new string(output.ToCharArray()
                 .OrderBy(s => (randAll.Next(2) % 2) == 0).ToArray());
 
+
+
+
             return outputFinal;
         }
+
+
+
 
         private static string GetSymbols(int minSymbols)
         {
@@ -153,9 +120,51 @@ namespace razortests.Pages.Accounts.Helpers
             return output; //XX
         }
 
+        public static Strength StrengthOfPassword(string password)
+        {
+            Strength output = Strength.Weak;
+
+            bool hasALower = false;
+            bool hasAnUpper = false;
+            bool hasANumber = false;
+            bool hasASymbol = false;
+
+            var hasNumber = new Regex(".*[0-9].*");
+            var hasUpperChar = new Regex(".*[A-Z].*");
+            var hasLowerChar = new Regex(".*[a-z].*");
+            var hasSymbolChar = new Regex(".*[!@#$%&*)(].*");
 
 
+            hasALower = hasLowerChar.IsMatch(password);
+            hasAnUpper = hasUpperChar.IsMatch(password);
+            hasANumber = hasNumber.IsMatch(password);
+            hasASymbol = hasSymbolChar.IsMatch(password);
 
+            if (hasAnUpper && hasANumber && hasALower && hasASymbol)
+            {
+                return Strength.Strong;
+            }
+            else if (!hasANumber && !hasAnUpper || !hasANumber && !hasASymbol || !hasANumber && !hasALower || !hasALower && !hasAnUpper || !hasALower && !hasASymbol
+                || !hasASymbol && !hasAnUpper)
+            {
+                return Strength.Weak;
+            }
+
+            else if (!hasASymbol || !hasAnUpper || !hasANumber || !hasALower)
+            {
+                return Strength.Medium;
+            }
+
+
+            return output;
+        }
+
+
+        private static bool ContainsSpecialChars(string value)
+        {
+            char[] symbolList = { '!', '@', '#', '$', '%', '&', '*', ')', '(' };
+            return symbolList.Any(value.Contains);
+        }
 
     }
 }

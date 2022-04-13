@@ -8,10 +8,10 @@ namespace razortests.Models
     public class PasswordGenModel
     {
 
-        //public string Letters { get; set; }
-        //public string Numbers { get; set; }
-        //public string Symbols { get; set; }
-        public int MaxLength { get; set; }
+
+        public int MaxLength { get; set; } = 15;
+
+        public Strength IsStrong { get; set; }
 
         public string GeneratedPassword { get; set; }
 
@@ -23,4 +23,14 @@ namespace razortests.Models
 
 
     }
+
+    public enum Strength
+    {
+        Weak,
+        Medium,
+        Strong
+    }
+
+
 }
+

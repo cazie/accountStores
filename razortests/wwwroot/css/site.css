@@ -69,3 +69,78 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/*custom*/
+
+.mybtn {
+    width: 170px;
+    padding: 10px 15px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 50px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 1px;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    border: 2px solid tomato;
+    transition: transform 0.3s;
+}
+
+.mybtnsm {
+    width: 100px;
+    padding: 10px 15px;
+    margin-right: 20px;
+    border-radius: 20px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 1px;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    border: 2px solid tomato;
+    transition: transform 0.3s;
+}
+
+.primary-mybtnsm {
+    background-color: tomato;
+}
+
+.second-mybtnsm {
+    background-color: transparent;
+}
+
+.mybtn:hover {
+    transform: translateY(-2px);
+}
+
+.mybtn:active {
+    transform: translateY(0);
+}
+
+.primary-mybtn {
+    background-color: tomato;
+}
+
+.second-mybtn {
+    background-color: transparent;
+
+}
+
+.mybtn:hover {
+    transform: translateY(-2px);
+}
+
+.mybtn:active {
+    transform: translateY(0);
+}
+
+.mainhead {
+    color: tomato;
+}

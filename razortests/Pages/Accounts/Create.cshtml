@@ -2,58 +2,84 @@
 @model razortests.Pages.Accounts.CreateModel
 @{
 }
+<div class="row my-2">
+    <div class="col-6">
+        <form class="row gy-2 gx-3" method="post">
 
+            <div class="form-row p-3 mt-4">
+                <div class="row pb-2">
+                    <h2 class="mainhead pl-3">Create Account</h2>
+                    <hr />
+                    <div asp-validation-summary="All"></div>
+             
 
-<form class="row gy-2 gx-3" method="post">
+                    <div class="col-12 form-group">
+                        <label asp-for="Account.AccountName" id="accountName"></label>
+                        <input asp-for="Account.AccountName" class="form-control" />
+                        <span asp-validation-for="Account.AccountName" class="text-danger"></span>
+                    </div>
 
-    <div class="form-row p-3 mt-4">
-        <div class="row pb-2">
-            <h2 class="text-primary pl-3">Create Account</h2>
-            <hr />
-            <div asp-validation-summary="All"></div>
-            <div class="col-12 form-group">
-                Order
-                <input asp-for="Account.DisplayOrder" class="form-control" />
-                <span asp-validation-for="Account.DisplayOrder" class="text-danger"></span>
-                <span asp-validation-for="Account.DisplayOrder" class="text-danger"></span>
+                    <div class="col-12 form-group">
+                        <label asp-for="Account.Description" id="description"></label>
+                        <input asp-for="Account.Description" class="form-control" />
+                        <span asp-validation-for="Account.Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12 form-group">
+                        <label asp-for="Account.Password"></label>
+                        <input asp-for="Account.Password" id="pswd" class="form-control" />
+                        <span asp-validation-for="Account.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="m-2">
+                        <input type="submit" value="Create" class="mybtn primary-mybtn mr-5" />
+                        <a asp-page="Index" ><input type="text" value="Back" class="mybtn second-mybtn ml-5" /></a>    
+                       
+                    </div>
+                </div>
             </div>
 
-            <div class="col-12 form-group">
-                <label asp-for="Account.AccountName"></label>
-                <input asp-for="Account.AccountName" class="form-control" />
-                <span asp-validation-for="Account.AccountName" class="text-danger"></span>
-            </div>
-          
-            <div class="col-12 form-group">
-                <label asp-for="Account.Description"></label>
-                <input asp-for="Account.Description" class="form-control" />
-                <span asp-validation-for="Account.Description" class="text-danger"></span>
-            </div>
 
-            <div class="col-12 form-group">
-                <label asp-for="Account.Password"></label>
-                <input asp-for="Account.Password" class="form-control" />
-                <span asp-validation-for="Account.Password" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
-            <a asp-page="Index" class="btn btn-secondary" style="width:150px">back to List</a>
-         
+        </form>
 
-        </div>
-        <input type="text" id="resultmove" size="20">
     </div>
 
-</form>
-@section Scripts{
+    <div class="col-6">
 
-    @{
-        <script>
-        function moveNumbers(number){
-            document.getElementById("resultmove").value=number;
+        <form class="row gy-2 gx-3 p-5 mt-5" action="Create?handler=GenPassword">
+
+
+            <div> <input hidden type="text" asp-for="Generator.GeneratedPassword" disabled class="text-right" placeholder="password" size="25" /> </div>
+
+            <div>
+                <button onclick="function fillpassfield(@Model.Generator.GeneratedPassword)" class="mybtn second-mybtn mt-5" asp-area="">Generate New Password</button>
+
+                <h4 class="mt-3"> Generating new password will clear fields</h4>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+    @section Scripts{
+
+        @{
+            <script>
+
+
+                    function fillpassfield(pswd) {
+                        document.getElementById("pswd").value = pswd;
+                       
+                }
+
+            
+                </script>
+
+
+            <partial name="_ValidationScriptsPartial" />
         }
-        </script>
-
-
-        <partial name="_ValidationScriptsPartial" />
     }
-}

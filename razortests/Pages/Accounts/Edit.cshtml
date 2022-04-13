@@ -3,49 +3,52 @@
 @{
 }
 
+<div class="row my-2">
+    <div class="col-6">
+        <form class="row gy-2 gx-3" method="post">
+            <input hidden asp-for="Account.Id " />
+            <div class="form-row p-3 mt-4">
+                <div class="row pb-2">
+                    <h2 class="mainhead pl-3">Edit Account</h2>
+                    <hr />
+                    <div asp-validation-summary="All"></div>
 
-<form class="row gy-2 gx-3" method="post">
-    <input hidden asp-for="Account.Id " />
-    <div class="form-row p-3 mt-4">
-        <div class="row pb-2">
-            <h2 class="text-primary pl-3">Edit Account</h2>
-            <hr />
-            <div asp-validation-summary="All"></div>
 
-            <div class="col-12 form-group">
-                Order
-                <input asp-for="Account.DisplayOrder" class="form-control" />
-                <span asp-validation-for="Account.DisplayOrder" class="text-danger"></span>
-                <span asp-validation-for="Account.DisplayOrder" class="text-danger"></span>
+
+                    <div class="col-12 form-group">
+                        <label asp-for="Account.AccountName"></label>
+                        <input asp-for="Account.AccountName" class="form-control" />
+                        <span asp-validation-for="Account.AccountName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12 form-group">
+                        <label asp-for="Account.Description"></label>
+                        <input asp-for="Account.Description" class="form-control" />
+                        <span asp-validation-for="Account.Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12 form-group">
+                        <label asp-for="Account.Password"></label>
+                        <input asp-for="Account.Password" class="form-control" />
+                        <span asp-validation-for="Account.Password" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="mybtn primary-mybtn" style="width:150px">Update</button>
+                    <a asp-page="Index" class="mybtn second-mybtn" style="width:150px">back</a>
+
+                </div>
             </div>
 
-            <div class="col-12 form-group">
-                <label asp-for="Account.AccountName"></label>
-                <input asp-for="Account.AccountName" class="form-control" />
-                <span asp-validation-for="Account.AccountName" class="text-danger"></span>
-            </div>
+        </form>
 
-            <div class="col-12 form-group">
-                <label asp-for="Account.Description"></label>
-                <input asp-for="Account.Description" class="form-control" />
-                <span asp-validation-for="Account.Description" class="text-danger"></span>
-            </div>
+    </div>
+    <div class="col-6">
 
-            <div class="col-12 form-group">
-                <label asp-for="Account.Password"></label>
-                <input asp-for="Account.Password" class="form-control" />
-                <span asp-validation-for="Account.Password" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width:150px">Edit</button>
-            <a asp-page="Index" class="btn btn-secondary" style="width:150px">back to List</a>
-
-        </div>
+    </div>
     </div>
 
-</form>
-@section Scripts{
+        @section Scripts{
 
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
-}
+            @{
+                <partial name="_ValidationScriptsPartial" />
+            }
+        }

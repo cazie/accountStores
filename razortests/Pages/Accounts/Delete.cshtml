@@ -2,47 +2,50 @@
 @model razortests.Pages.Accounts.DeleteModel
 @{
 }
+<div class="row my-2">
+    <div class="col-6">
+    
+            <form class="row gy-2 gx-3" method="post">
+                <input hidden asp-for="Account.Id " />
+                <div class="form-row p-3 mt-4">
+                    <div class="row pb-2">
+                        <h2 class="mainhead pl-3">Confirm Delete</h2>
+                        <hr />
+                        <div asp-validation-summary="All"></div>
 
 
-<form class="row gy-2 gx-3" method="post">
-    <input hidden asp-for="Account.Id " />
-    <div class="form-row p-3 mt-4">
-        <div class="row pb-2">
-            <h2 class="text-primary pl-3">Confirm Delete</h2>
-            <hr />
-            <div asp-validation-summary="All"></div>
+                        <div class="col-12 form-group">
+                            <label asp-for="Account.AccountName"></label>
+                            <input asp-for="Account.AccountName" disabled class="form-control" />
 
-            <div class="col-12 form-group">
-                Order
-                <input asp-for="Account.DisplayOrder" class="form-control" />
-                <span asp-validation-for="Account.DisplayOrder" disabled class="text-danger"></span>
-               
-            </div>
+                        </div>
 
-            <div class="col-12 form-group">
-                <label asp-for="Account.AccountName"></label>
-                <input asp-for="Account.AccountName" disabled class="form-control" />
-               
-            </div>
+                        <div class="col-12 form-group">
+                            <label asp-for="Account.Description"></label>
+                            <input asp-for="Account.Description" disabled class="form-control" />
 
-            <div class="col-12 form-group">
-                <label asp-for="Account.Description"></label>
-                <input asp-for="Account.Description" disabled class="form-control" />
-              
-            </div>
+                        </div>
 
-            <div class="col-12 form-group">
-                <label asp-for="Account.Password"></label>
-                <input asp-for="Account.Password" class="form-control" />
-                <span asp-validation-for="Account.Password" disabled class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-dangerpr-5" style="width:150px">Delete</button>
-            <a asp-page="Index" class="btn btn-secondary pr-5" style="width:150px">back to List</a>
-            <a asp-page="../Index" class="btn btn-secondary" style="width:150px">back to Home</a>
-        </div>
+                        <div class="col-12 form-group">
+                            <label asp-for="Account.Password"></label>
+                            <input asp-for="Account.Password" class="form-control" />
+                            <span asp-validation-for="Account.Password" disabled class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="mybtn primary-mybtn pr-5">Delete</button>
+                        <a asp-page="Index" class="mybtn second-mybtn pr-5">Back</a>
+
+                    </div>
+                </div>
+
+            </form>
+   
+
+
     </div>
+    <div class="col-6">
 
-</form>
+    </div>
+</div>
 @section Scripts{
 
     @{
