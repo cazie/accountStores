@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using razortests.Models;
+using AccountStore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace razortests.Data
+namespace AccountStore.Data
 {
     public class ApplicationDbContext : DbContext
     {

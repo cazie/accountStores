@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using razortests.Data;
-using razortests.Models;
+using AccountStore.Data;
+using AccountStore.Models;
 
-namespace razortests.Pages.Accounts
+namespace AccountStore.Pages.Accounts
 {
     public class DeleteModel : PageModel
     {

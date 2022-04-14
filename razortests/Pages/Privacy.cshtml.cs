@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace razortests.Pages
+namespace AccountStore.Pages
 {
     public class PrivacyModel : PageModel
     {

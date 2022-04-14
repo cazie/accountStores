@@ -1,9 +1,9 @@
 
-using razortests.Pages.Accounts.Helpers;
+using AccountStore.Pages.Accounts.Helpers;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using razortests.Models;
+using AccountStore.Models;
 
 namespace GeneratePassword.Pages
 {

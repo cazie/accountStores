@@ -16,7 +16,7 @@
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
       }
     },
-    "razortests": {
+    "AccountStore": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

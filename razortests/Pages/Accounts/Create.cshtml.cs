@@ -3,19 +3,23 @@ using System.Threading.Tasks;
 using AccountStoreApp.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using razortests.Data;
-using razortests.Models;
-using razortests.Pages.Accounts.Helpers;
+using AccountStore.Data;
+using AccountStore.Models;
+using AccountStore.Pages.Accounts.Helpers;
+using AccountStore.Services.Interfaces;
+using System;
 
-namespace razortests.Pages.Accounts
+namespace AccountStore.Pages.Accounts
 {
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
+        private readonly IImageService _imageService;
 
-        public CreateModel(ApplicationDbContext context)
+        public CreateModel(ApplicationDbContext context, IImageService imageService)
         {
             _context = context;
+            _imageService = imageService;
         }
 
         [BindProperty(SupportsGet = true)]
@@ -30,40 +34,29 @@ namespace razortests.Pages.Accounts
 
         public void OnGet()
         {
-            //Generator.MaxLength = 10;
-            AddPswd.GeneratedPassword = GeneratorHelper.GeneratePassword(Generator.MaxLength, Generator.UseCaps, Generator.UseSymb, Generator.UseNumbers);
-            Account.Password = AddPswd.GeneratedPassword;
+           
+            Generator.GeneratedPassword = GeneratorHelper.GeneratePassword(Generator.MaxLength, Generator.UseCaps, Generator.UseSymb, Generator.UseNumbers);
+            Account.Password = Generator.GeneratedPassword;
         }
 
 
         public void OnGetGenPassword()
         {
            
-
-            //Generator.MaxLength = 10;
             Generator.GeneratedPassword = GeneratorHelper.GeneratePassword(Generator.MaxLength, Generator.UseCaps, Generator.UseSymb, Generator.UseNumbers);
-           // Account.Password = Generator.GeneratedPassword;
-
-
-
+    
         }
-        //   public async Task<IActionResult> OnPost(AccountModel account) only if not [binding property] [bindproperites] at top of class for all properites
-
-
+      
 
         public async Task<IActionResult> OnPost()
         {
 
 
-            //Generator.GeneratedPassword = GeneratorHelper.GeneratePassword(Generator.MaxLength, Generator.UseCaps, Generator.UseSymb, Generator.UseNumbers);
-            //Account.Password = Generator.GeneratedPassword;
-
-
-            //no reps
-            if (Account.AccountName == Account.DisplayOrder.ToString())
+            if (Account.ImageFile != null)
             {
-                //ModelState.AddModelError(string.Empty, "Display order cannot match name"); //   <div asp-validation-summary="All"></div>
-                ModelState.AddModelError(Account.AccountName, "Display order cannot match name");
+                Account.ImageData = await _imageService.ConvertFileToByteArrayAsync(Account.ImageFile);
+                Account.ImageType = Account.ImageFile.ContentType;
+                Account.Created = DateTime.Now;
             }
 
             if (ModelState.IsValid == false)
@@ -71,6 +64,7 @@ namespace razortests.Pages.Accounts
                 return Page();
             }
 
+           
 
 
             await _context.AddAsync(Account);

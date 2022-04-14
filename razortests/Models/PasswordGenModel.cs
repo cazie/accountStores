@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace razortests.Models
+namespace AccountStore.Models
 {
     public class PasswordGenModel
     {

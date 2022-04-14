@@ -1,5 +1,5 @@
 ﻿@page
-@model razortests.Pages.Accounts.EditModel
+@model AccountStore.Pages.Accounts.EditModel
 @{
 }
 
@@ -31,6 +31,21 @@
                         <label asp-for="Account.Password"></label>
                         <input asp-for="Account.Password" class="form-control" />
                         <span asp-validation-for="Account.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Account.Created" class="control-label"></label>
+                        <input asp-for="Account.Created" class="form-control" />
+                        <span asp-validation-for="Account.Created" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Account.ImageData" class="control-label"></label>
+                        <input asp-for="Account.ImageData" class="form-control" />
+                        <span asp-validation-for="Account.ImageData" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Account.ImageType" class="control-label"></label>
+                        <input asp-for="Account.ImageType" class="form-control" />
+                        <span asp-validation-for="Account.ImageType" class="text-danger"></span>
                     </div>
                     <button type="submit" class="mybtn primary-mybtn" style="width:150px">Update</button>
                     <a asp-page="Index" class="mybtn second-mybtn" style="width:150px">back</a>

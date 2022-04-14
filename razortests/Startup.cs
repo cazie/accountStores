@@ -5,14 +5,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using razortests.Data;
-using razortests.Pages.Accounts.Helpers;
+using AccountStore.Data;
+using AccountStore.Pages.Accounts.Helpers;
+using AccountStore.Services;
+using AccountStore.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace razortests
+namespace AccountStore
 {
     public class Startup
     {
@@ -31,6 +33,7 @@ namespace razortests
                Configuration.GetConnectionString("DefaultConnection")
                 ));
             services.AddRazorPages();
+            services.AddScoped<IImageService, BasicImageService>();
         
         }
 
